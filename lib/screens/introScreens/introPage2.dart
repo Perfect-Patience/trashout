@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trashout/components/button.dart';
-import 'package:trashout/introScreens/introPage3.dart';
 
 class IntroScreen2 extends StatelessWidget {
   const IntroScreen2({super.key});

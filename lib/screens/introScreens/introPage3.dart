@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trashout/components/button.dart';
-
-import '../login.dart';
 
 class IntroScreen3 extends StatelessWidget {
   const IntroScreen3({super.key});

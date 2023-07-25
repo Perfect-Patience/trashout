@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:trashout/introScreens/phoneNumber.dart';
-class Getstarted extends StatelessWidget {
+import 'package:trashout/screens/introScreens/phoneNumber.dart';
+class GetStarted extends StatelessWidget {
+  const GetStarted({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +90,7 @@ class Getstarted extends StatelessWidget {
 
                     label: const Text("        Sign in with google")),
               ),
-            SizedBox(height: 30.0,),
+            const SizedBox(height: 30.0,),
             Container(
               width: 240,
               height: 50.0,

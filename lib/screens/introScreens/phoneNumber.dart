@@ -12,6 +12,7 @@ class GetNumber extends StatefulWidget {
 }
 
 class _GetNumberState extends State<GetNumber> {
+  late String phoneNumber;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +47,11 @@ class _GetNumberState extends State<GetNumber> {
             //number input field
             Form(
               child: IntlPhoneField(
+                onChanged : (number){
+                  setState(() {
+                    phoneNumber = number.completeNumber;
+                  });
+                },
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(
                     borderSide: BorderSide(),
@@ -62,15 +68,16 @@ class _GetNumberState extends State<GetNumber> {
               fontSize: 15,
             ),
             ),
-            
-            Container(
-              height: 470,
-              alignment: const Alignment(0.0, 1),
-              child: GreenButton("Continue", () {
-                Navigator.push(context, MaterialPageRoute(builder:
-                    (context) => const OtpVerification()));
-              }
-              ),
+
+            const Expanded(child: SizedBox(height: 300,)),
+
+            GreenButton("Continue", () {
+              Navigator.push(context, MaterialPageRoute(builder:
+                  (context) => const OtpVerification()));
+
+              Navigator.pushNamed(context, '/verification', arguments: phoneNumber);
+
+            }
             ),
           ],
         ),
