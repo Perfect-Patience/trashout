@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import './getStarted.dart';
 
 import '../../components/button.dart';
-import '../introScreens/introPage1.dart';
-import '../introScreens/introPage2.dart';
-import '../introScreens/introPage3.dart';
+import 'getStarted.dart';
+import 'introPage1.dart';
+import 'introPage2.dart';
+import 'introPage3.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
@@ -62,7 +62,7 @@ class _IntroScreenState extends State<IntroScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const GetStarted()));
+                                    builder: (context) => GetStarted()));
                           })
                         : GreenButton("NEXT", () {
                             _controller.nextPage(
