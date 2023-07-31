@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class DriverLicenseForm extends StatefulWidget {
+  const DriverLicenseForm({super.key});
+
   @override
-  _DriverLicenseFormState createState() => _DriverLicenseFormState();
+  DriverLicenseFormState createState() => DriverLicenseFormState();
 }
 
-class _DriverLicenseFormState extends State<DriverLicenseForm> {
+class DriverLicenseFormState extends State<DriverLicenseForm> {
   final _formKey = GlobalKey<FormState>();
 
   // Form fields variables
@@ -65,8 +67,8 @@ class _DriverLicenseFormState extends State<DriverLicenseForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Driver License Form'),
-        backgroundColor: Color(0xFF00BF63),
+        title: const Text('Driver License Form'),
+        backgroundColor: const Color(0xFF00BF63),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -75,7 +77,7 @@ class _DriverLicenseFormState extends State<DriverLicenseForm> {
           child: ListView(
             children: [
               TextFormField(
-                decoration: InputDecoration(labelText: 'First Name'),
+                decoration: const InputDecoration(labelText: 'First Name'),
                 onChanged: (value) {
                   firstName = value;
                 },
@@ -88,7 +90,7 @@ class _DriverLicenseFormState extends State<DriverLicenseForm> {
               ),
               // Add Location of Agent TextFormField
               TextFormField(
-                decoration: InputDecoration(labelText: 'Location of Agent'),
+                decoration: const InputDecoration(labelText: 'Location of Agent'),
                 onChanged: (value) {
                   agentLocation = value;
                 },
@@ -101,7 +103,7 @@ class _DriverLicenseFormState extends State<DriverLicenseForm> {
               ),
               // Add Agency Location Name TextFormField
               TextFormField(
-                decoration: InputDecoration(labelText: 'Agency Location Name'),
+                decoration: const InputDecoration(labelText: 'Agency Location Name'),
                 onChanged: (value) {
                   agencyLocationName = value;
                 },
@@ -113,7 +115,7 @@ class _DriverLicenseFormState extends State<DriverLicenseForm> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Last Name'),
+                decoration: const InputDecoration(labelText: 'Last Name'),
                 onChanged: (value) {
                   lastName = value;
                 },
@@ -125,7 +127,7 @@ class _DriverLicenseFormState extends State<DriverLicenseForm> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Email'),
+                decoration: const InputDecoration(labelText: 'Email'),
                 onChanged: (value) {
                   email = value;
                 },
@@ -139,7 +141,7 @@ class _DriverLicenseFormState extends State<DriverLicenseForm> {
               ),
               DropdownButtonFormField<String>(
                 value: gender,
-                decoration: InputDecoration(labelText: 'Gender'),
+                decoration: const InputDecoration(labelText: 'Gender'),
                 items: ['Male', 'Female', 'Others']
                     .map((item) => DropdownMenuItem(
                           value: item,
@@ -153,7 +155,7 @@ class _DriverLicenseFormState extends State<DriverLicenseForm> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Date of Birth'),
+                decoration: const InputDecoration(labelText: 'Date of Birth'),
                 onChanged: (value) {
                   dob = value;
                 },
@@ -166,7 +168,7 @@ class _DriverLicenseFormState extends State<DriverLicenseForm> {
               ),
               TextFormField(
                 decoration:
-                    InputDecoration(labelText: "Driver's License Number"),
+                    const InputDecoration(labelText: "Driver's License Number"),
                 onChanged: (value) {
                   licenseNumber = value;
                 },
@@ -178,7 +180,7 @@ class _DriverLicenseFormState extends State<DriverLicenseForm> {
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: "License Expiry Date"),
+                decoration: const InputDecoration(labelText: "License Expiry Date"),
                 onChanged: (value) {
                   licenseExpiryDate = value;
                 },
@@ -198,29 +200,29 @@ class _DriverLicenseFormState extends State<DriverLicenseForm> {
                     context: context,
                     builder: (context) => Center(
                       child: AlertDialog(
-                        title: Text('Select Image Source'),
+                        title: const Text('Select Image Source'),
                         actions: [
                           TextButton(
                             onPressed: () {
                               _pickImage(ImageSource.camera);
                               Navigator.pop(context);
                             },
-                            child: Text('Camera'),
+                            child: const Text('Camera'),
                           ),
                           TextButton(
                             onPressed: () {
                               _pickImage(ImageSource.gallery);
                               Navigator.pop(context);
                             },
-                            child: Text('Gallery'),
+                            child: const Text('Gallery'),
                           ),
                         ],
                       ),
                     ),
                   );
                 },
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
+                child: const Padding(
+                  padding: EdgeInsets.only(top: 16.0),
                   child: Text(
                     'Upload Driver\'s License',
                     style: TextStyle(
@@ -233,12 +235,12 @@ class _DriverLicenseFormState extends State<DriverLicenseForm> {
 
               ElevatedButton(
                 onPressed: _submitForm,
-                child: Text(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF00BF63),
+                ),
+                child: const Text(
                   'Submit',
                   style: TextStyle(color: Colors.white),
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF00BF63),
                 ),
               ),
             ],
