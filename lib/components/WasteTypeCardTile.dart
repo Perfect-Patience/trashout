@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
 
-class WasteTypeTile extends StatelessWidget {
+import '../constants/globalVariables.dart';
+
+class WasteTypeTile extends StatefulWidget {
 
   final Widget icon;
   final String text;
-  final Function()? onTap;
 
   const WasteTypeTile({super.key,
-    required this.icon, required this.text, required this.onTap,
+    required this.icon, required this.text
   });
 
+  @override
+  State<WasteTypeTile> createState() => _WasteTypeTileState();
+}
+
+class _WasteTypeTileState extends State<WasteTypeTile> {
+
+  void _onTap() {
+    wasteType = widget.text;
+    Navigator.pushNamed(context, "/payment");
+  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: _onTap,
       child: Container(
         height: 140.0,
         width: 140.0,
@@ -26,9 +37,9 @@ class WasteTypeTile extends StatelessWidget {
         ),
         child: Column(
           children: [
-            icon,
+            widget.icon,
             const SizedBox(height: 15,),
-            Text(text, textAlign: TextAlign.center,),
+            Text(widget.text, textAlign: TextAlign.center,),
           ],
         ),
       ),

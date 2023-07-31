@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:trashout/constants/constants.dart';
 import 'package:trashout/screens/setLocation/SetLocation.dart';
 
 import '../../components/cardTile.dart';
+import '../../constants/globalVariables.dart';
 import '../Notifications.dart';
 import '../Payments.dart';
 import '../RecycleIt.dart';
@@ -18,6 +20,24 @@ class HomeDetailPage extends StatefulWidget {
 }
 
 class _HomeDetailPageState extends State<HomeDetailPage> {
+  var _dateSelected;
+  void _showDatePicker() {
+    showDatePicker(context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2027)
+    ).then((value) {
+      setState(() {
+        _dateSelected = value!;
+        date = DateFormat('dd/MM/yy').format (_dateSelected);
+      });
+      if (_dateSelected != null) {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const SetLocation()));
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,8 +79,8 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                     icon: Icons.calendar_month_rounded,
                     text: "schedule a pick up",
                     onTap: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const SetLocation()));                    },
+                      _showDatePicker();
+                      },
                   ),
                 ],
               ),

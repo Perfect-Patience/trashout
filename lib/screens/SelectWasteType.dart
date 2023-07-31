@@ -31,64 +31,66 @@ class SelectWasteType extends StatelessWidget {
           Positioned(
             bottom: 0.0,
             child: Container(
-              padding:const EdgeInsets.all(20),
-              color: Colors.grey[200],
+              padding:const EdgeInsets.all(35),
               width: screenWidth ,
               height: 600,
-              child:  Center(
-                child: Column(
-                  children: [
-                    const Text("WHAT TYPE OF WASTE ARE WE PICKING?"),
-                    const SizedBox(height: 30,),
-                    Row(
-                      children: [
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: const BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20)),
+              ),
+              child:  Column(
+                children: [
+                  const Text("WHAT TYPE OF WASTE ARE WE PICKING?"),
+                  const SizedBox(height: 30,),
+                  Row(
+                    children: [
 
-                        WasteTypeTile(
-                    icon:  SvgPicture.asset("assets/knotted-sack-icon.svg", width: 50, height: 50,),
-                    text: "Domestic Waste",
-                    onTap: (){}),
-                        const SizedBox(width: 30,),
-                        WasteTypeTile(
-                            icon:  SvgPicture.asset("assets/hospital-trash-can-icon.svg", width: 50, height: 50,),
-                            text: "Medical waste",
-                            onTap: (){}),
-                      ],
-                    ),
-                    const SizedBox(height: 30,),
+                      WasteTypeTile(
+                  icon:  SvgPicture.asset("assets/knotted-sack-icon.svg", width: 50, height: 50,),
+                  text: "Domestic Waste",
+                      ),
+                      const SizedBox(width: 30,),
+                      WasteTypeTile(
+                          icon:  SvgPicture.asset("assets/hospital-trash-can-icon.svg", width: 50, height: 50,),
+                          text: "Medical waste",
 
-                    Row(
-                      children: [
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 30,),
 
-                        WasteTypeTile(
-                            icon:  SvgPicture.asset("assets/knotted-sack-icon.svg", width: 50, height: 50,),
-                            text: "Domestic Waste",
-                            onTap: (){}),
-                        const SizedBox(width: 30,),
-                        WasteTypeTile(
-                            icon:  SvgPicture.asset("assets/biohazard-icon.svg", width: 50, height: 50,),
-                            text: "Hazardous waste",
-                            onTap: (){}),
-                      ],
-                    ),
-                    const SizedBox(height: 30,),
+                  Row(
+                    children: [
 
-                    Row(
-                      children: [
+                      WasteTypeTile(
+                          icon:  SvgPicture.asset("assets/knotted-sack-icon.svg", width: 50, height: 50,),
+                          text: "Domestic Waste",
+                      ),
+                      const SizedBox(width: 30,),
+                      WasteTypeTile(
+                          icon:  SvgPicture.asset("assets/biohazard-icon.svg", width: 50, height: 50,),
+                          text: "Hazardous waste",
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 30,),
 
-                        WasteTypeTile(
-                            icon:  SvgPicture.asset("assets/plastic-bottle-icon.svg", width: 50, height: 50,),
-                            text: "Plastic Waste",
-                            onTap: (){}),
-                        const SizedBox(width: 30,),
-                        WasteTypeTile(
-                            icon:  SvgPicture.asset("assets/commercial-complex-icon.svg", width: 50, height: 50,),
-                            text: "Commercial Waste",
-                            onTap: (){}),
-                      ],
-                    )
+                  Row(
+                    children: [
 
-                  ],
-                ),
+                      WasteTypeTile(
+                          icon:  SvgPicture.asset("assets/plastic-bottle-icon.svg", width: 50, height: 50,),
+                          text: "Plastic Waste",
+                      ),
+                      const SizedBox(width: 30,),
+                      WasteTypeTile(
+                          icon:  SvgPicture.asset("assets/commercial-complex-icon.svg", width: 50, height: 50,),
+                          text: "Commercial Waste",
+                      ),
+                    ],
+                  )
+
+                ],
               ),
             ),
           )

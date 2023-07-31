@@ -42,6 +42,11 @@ dependencies:
   http: ^1.1.0
   firebase_core: ^2.15.0
   cloud_firestore: ^4.8.4
+  firebase_auth: ^4.7.2
+  shared_preferences: ^2.2.0
+  intl: ^0.18.1
+  google_maps_flutter: ^2.4.0
+#  location: ^5.0.1
 
 dev_dependencies:
   flutter_test:

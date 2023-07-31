@@ -1,9 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-
 import '../introScreens/onboarding.dart';
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -24,7 +21,6 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   route() {
-    //Navigator.of(context).pushReplacementNamed("/intro");
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const IntroScreen()),
@@ -44,3 +40,5 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
+
+

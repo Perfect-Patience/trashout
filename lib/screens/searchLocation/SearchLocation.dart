@@ -5,6 +5,7 @@ import 'package:trashout/screens/models/placeAutoCompleteResponse.dart';
 import 'package:trashout/utilities/locationNetworkUtility.dart';
 
 import '../../constants/constants.dart';
+import '../../constants/globalVariables.dart';
 import '../SelectWasteType.dart';
 import '../models/autocomplete_prediction.dart';
 
@@ -16,7 +17,6 @@ class SearchLocation extends StatefulWidget {
 }
 
 class _SearchLocationState extends State<SearchLocation> {
-  var location;
   List <AutocompletePrediction> locationPrediction = [];
 
   Future<void> placeAutocomplete(String query) async {
@@ -94,11 +94,14 @@ class _SearchLocationState extends State<SearchLocation> {
                       LocationListTile(
                           location: locationPrediction[index].description!,
                           press:() {
-                            location = locationPrediction[index].description;
-                            print(location);
+                            String? location = locationPrediction[index].description;
+                            pickUpLocation = location!;
                             Navigator.push(context, MaterialPageRoute(builder: (context) =>const SelectWasteType()));
 
-                          })))
+                          }
+                          ),
+              ),
+              )
             ],
           ),
         ),

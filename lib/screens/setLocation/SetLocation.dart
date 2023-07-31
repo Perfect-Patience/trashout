@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:trashout/components/uncolored_button.dart';
 import 'package:trashout/constants/constants.dart';
-
+import 'dart:async';
+import "package:google_maps_flutter/google_maps_flutter.dart";
 import '../searchLocation/SearchLocation.dart';
+
 
 class SetLocation extends StatefulWidget {
   const SetLocation({super.key});
@@ -12,6 +14,9 @@ class SetLocation extends StatefulWidget {
   State<SetLocation> createState() => _SetLocationState();
 }
 class _SetLocationState extends State<SetLocation> {
+
+  final Completer<GoogleMapController> _controller = Completer();
+  static const LatLng sourceLocation = LatLng(6.673175, -1.565423);
   @override
 
   Widget build(BuildContext context) {
@@ -23,10 +28,14 @@ class _SetLocationState extends State<SetLocation> {
       body: Stack(
         children: [
 
-             Container(
-              color: Colors.red,
-              padding: const EdgeInsets.all(20.0),
-            ),
+            //  Container(
+            //   color: Colors.red,
+            //   padding: const EdgeInsets.all(20.0),
+            // ),
+           const GoogleMap(initialCameraPosition: CameraPosition(
+            target: sourceLocation,
+            zoom: 70
+          )),
           Positioned(
             bottom: 0.0,
             child: Container(
