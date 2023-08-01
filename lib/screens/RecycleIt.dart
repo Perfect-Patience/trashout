@@ -6,16 +6,27 @@ class RecycleIt extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search'),
-        backgroundColor: Color(0xff00bf63), // Change the AppBar color here
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              // Perform search action here
-            },
+        backgroundColor: Colors.white, // Change app bar color to white
+        iconTheme: IconThemeData(
+            color: Colors.black), // Change back button and icon color to black
+        title: TextField(
+          decoration: InputDecoration(
+            hintText: 'Search', // Placeholder text for the search bar
+            hintStyle: TextStyle(color: Colors.grey),
+            filled: true,
+            fillColor:
+                Colors.white, // Change the background color of the search bar
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(25), // Curved border
+              borderSide: BorderSide.none,
+            ),
+            prefixIcon:
+                Icon(Icons.search, color: Colors.black), // Search icon color
           ),
-        ],
+          onSubmitted: (value) {
+            // Perform search action here
+          },
+        ),
       ),
       body: Column(
         children: [
