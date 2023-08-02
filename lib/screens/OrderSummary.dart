@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:trashout/components/button.dart';
 import 'package:trashout/constants/constants.dart';
 import 'package:trashout/readData/readAgencyData.dart';
+import 'package:trashout/screens/setLocation/SetLocation.dart';
 
 import '../constants/globalVariables.dart';
 
@@ -91,9 +92,9 @@ class OrderSummary extends StatelessWidget {
                 fontSize: 16,
                 fontWeight: FontWeight.w500
             ),),
-            const SizedBox(height: 35,),
+            const SizedBox(height: 25,),
             const Divider(thickness: 2,),
-            const SizedBox(height: 90,),
+            const SizedBox(height: 70,),
 
             GreenButton("Confirm Order", () { }),
             const SizedBox(height: 30,),
@@ -102,7 +103,10 @@ class OrderSummary extends StatelessWidget {
               height: 50,
               width: 360,
               child: OutlinedButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => const SetLocation()));
+                  },
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(width: 2, color: primaryColor),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.0))
