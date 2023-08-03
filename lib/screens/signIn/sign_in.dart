@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:trashout/components/loginButton.dart';
 import 'package:trashout/screens/signIn/sign_in_as.dart';
@@ -7,11 +9,44 @@ import '../../components/loginInputField.dart';
 import '../../components/squaretile.dart';
 import '../home/home.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatefulWidget {
   SignIn({Key? key}) : super(key: key);
 
+  @override
+  State<SignIn> createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
   final TextEditingController emailController = TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
+
+  void createUserDocument(
+      String userId, String email, String username, String phoneNumber) {
+    final CollectionReference usersCollection =
+        FirebaseFirestore.instance.collection('users');
+    usersCollection.doc(userId).set({
+      'email': email,
+      'username': username,
+      'phoneNumber': phoneNumber,
+      // Add more fields as needed
+    });
+  }
+
+  void _showMessage(String message, Color backgroundColor) {
+    final snackBar = SnackBar(
+      content: Text(
+        message,
+        style: TextStyle(color: Colors.white),
+      ),
+      backgroundColor: backgroundColor,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    // _scaffoldKey.currentState?.openDrawer();
+    // _scaffoldKey.currentState?.(
+
+    // );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +84,6 @@ class SignIn extends StatelessWidget {
                 controller: emailController,
                 hintText: 'Email',
                 obscureText: false,
-                validator: (value) {
-                  return null;
-                },
               ),
               const SizedBox(
                 height: 20.0,
@@ -60,9 +92,6 @@ class SignIn extends StatelessWidget {
                 controller: passwordController,
                 hintText: 'Password',
                 obscureText: true,
-                validator: (value) {
-                  return null;
-                },
               ),
               const SizedBox(
                 height: 20,
@@ -86,13 +115,38 @@ class SignIn extends StatelessWidget {
                 height: 55,
               ),
               LoginButton(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomePage(),
-                    ),
-                  );
+                onTap: () async {
+                  try {
+                    UserCredential userCredential =
+                        await FirebaseAuth.instance.signInWithEmailAndPassword(
+                      email: emailController.text,
+                      password: passwordController.text,
+                    );
+
+                    // ignore: use_build_context_synchronously
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ));
+
+                    _showMessage("Log in successful", Colors.green);
+                    // ignore: use_build_context_synchronously
+                  } on FirebaseAuthException catch (e) {
+                    _showMessage(e.message!, Colors.red);
+                  } catch (e) {
+                    // Handle any login errors
+                    _showMessage("Something went wrong", Colors.red);
+
+                    print('Registration Error: $e');
+                  }
+
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => const HomePage(),
+                  //   ),
+                  // );
                 },
               ),
 
