@@ -9,7 +9,7 @@ class LoginInputField extends StatelessWidget {
     super.key,
     required this.controller,
     required this.hintText,
-    required this.obscureText,
+    required this.obscureText, required Null Function(dynamic value) validator,
   });
 
   @override

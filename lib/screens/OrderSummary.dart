@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:trashout/components/button.dart';
 import 'package:trashout/constants/constants.dart';
 import 'package:trashout/readData/readAgencyData.dart';
+import 'package:trashout/screens/home/home.dart';
 import 'package:trashout/screens/setLocation/SetLocation.dart';
 
 import '../constants/globalVariables.dart';
@@ -96,7 +98,23 @@ class OrderSummary extends StatelessWidget {
             const Divider(thickness: 2,),
             const SizedBox(height: 70,),
 
-            GreenButton("Confirm Order", () { }),
+            GreenButton("Confirm Order", () {
+              Map<String, String> orderDetailsToSave = {
+                'Date' : date,
+                'Location' : pickUpLocation,
+                'Waste Type': wasteType,
+                'Payment Method' : paymentType ,
+                // 'Agency':  ,
+              };
+
+              FirebaseFirestore.instance.collection("orders").add(orderDetailsToSave);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("Order saved, you will receive a notification soon")),
+              );
+
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+
+            }),
             const SizedBox(height: 30,),
             // GreenButton("Reschedule", () { }),
             SizedBox(
@@ -136,7 +154,7 @@ class GreenText extends StatelessWidget {
     return Text(text , style: const TextStyle(
       fontWeight: FontWeight.w500,
       color: primaryColor,
-      fontSize: 20
+      fontSize: 18
     ),);
   }
 }

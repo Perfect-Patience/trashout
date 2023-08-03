@@ -259,7 +259,7 @@ class _OtpVerificationState extends State<OtpVerification> {
           const Expanded(child: SizedBox(height: 50.0,)),
             GreenButton("VERIFY",
                     () {Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const SignIn()) );
+                    MaterialPageRoute(builder: (context) => SignIn()) );
                 }),
             const SizedBox(height: 10.0,),
           Container(

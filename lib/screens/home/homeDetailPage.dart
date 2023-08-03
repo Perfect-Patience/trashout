@@ -102,7 +102,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                     text: "recycle it",
                     onTap: (){
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const RecycleIt()));
+                          MaterialPageRoute(builder: (context) => RecycleIt()));
                     },
                   ),
                 ],
@@ -116,7 +116,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                     text: "notifications",
                     onTap: (){
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const Notifications()));
+                          MaterialPageRoute(builder: (context) => Notifications()));
                     },
                   ),
                   const SizedBox(width: 20.0,),

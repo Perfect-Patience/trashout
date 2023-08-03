@@ -49,7 +49,7 @@ class SignIn extends StatelessWidget {
                 controller: emailController,
                 hintText: 'Email',
                 obscureText: false,
-                validator: (value) {
+                  validator: (value) {
                   return null;
                 },
               ),
