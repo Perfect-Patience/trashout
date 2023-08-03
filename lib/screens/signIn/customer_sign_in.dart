@@ -1,4 +1,11 @@
+import 'dart:math';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'dart:developer' as console show log;
+
+import 'package:trashout/screens/home/home.dart';
 
 class FormPage extends StatefulWidget {
   @override
@@ -15,7 +22,7 @@ class _FormPageState extends State<FormPage> {
   final TextEditingController confirmPasswordController =
       TextEditingController();
 
-  void _submitForm() {
+  void _submitForm() async {
     if (_formKey.currentState!.validate()) {
       // Form is valid, proceed with registration logic here
       String firstName = firstNameController.text;
@@ -31,9 +38,65 @@ class _FormPageState extends State<FormPage> {
       print('Password: $password');
       print('Confirm Password: $confirmPassword');
 
+      try {
+        UserCredential userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        // User registration successful, proceed to store additional information
+        createUserDocument(
+          userCredential.user!.uid,
+          email,
+          firstName,
+          lastName,
+        );
+        _showMessage(
+            "Your account has been created successfully", Colors.green);
+        // ignore: use_build_context_synchronously
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const HomePage(),
+            ));
+      } on FirebaseAuthException catch (e) {
+        _showMessage(e.message!, Colors.red);
+      } catch (e) {
+        // Handle any registration errors
+        _showMessage("Something went wrong", Colors.red);
+
+        print('Registration Error: $e');
+      }
       // TODO: Perform registration logic here
       // ...
     }
+  }
+
+  void createUserDocument(
+      String userId, String email, String username, String phoneNumber) {
+    final CollectionReference usersCollection =
+        FirebaseFirestore.instance.collection('users');
+    usersCollection.doc(userId).set({
+      'email': email,
+      'username': username,
+      'phoneNumber': phoneNumber,
+      // Add more fields as needed
+    });
+  }
+
+  void _showMessage(String message, Color backgroundColor) {
+    final snackBar = SnackBar(
+      content: Text(
+        message,
+        style: TextStyle(color: Colors.white),
+      ),
+      backgroundColor: backgroundColor,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    // _scaffoldKey.currentState?.openDrawer();
+    // _scaffoldKey.currentState?.(
+
+    // );
   }
 
   @override

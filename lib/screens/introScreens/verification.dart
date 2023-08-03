@@ -21,10 +21,11 @@ class _OtpVerificationState extends State<OtpVerification> {
     }
 
     return Material(
-      child: Padding(
-        padding: const EdgeInsets.all(25.0),
-        child: Form(
-          child: Column(children: [
+        child: Padding(
+      padding: const EdgeInsets.all(25.0),
+      child: Form(
+        child: Column(
+          children: [
             const SizedBox(
               height: 15.0,
             ),
@@ -54,32 +55,26 @@ class _OtpVerificationState extends State<OtpVerification> {
             ),
             Align(
               alignment: Alignment.centerLeft,
-              child: Text(
-                "A code was sent to $phoneNum ",
-                style: const TextStyle(
-
-                  fontSize: 16.0,
-                )
-              ),
+              child: Text("A code was sent to $phoneNum ",
+                  style: const TextStyle(
+                    fontSize: 16.0,
+                  )),
             ),
             const SizedBox(
               height: 10.0,
             ),
             const Align(
               alignment: Alignment.centerLeft,
-              child:  Text(
-                    "Edit phone number",
-                    textAlign: TextAlign.start,
-
-                    style: TextStyle(
-                        color: Color(0xff00bf63),
-                      fontSize: 14.0
-
-                    ),
-                  ),
+              child: Text(
+                "Edit phone number",
+                textAlign: TextAlign.start,
+                style: TextStyle(color: Color(0xff00bf63), fontSize: 14.0),
+              ),
             ),
 
-            const SizedBox(height: 30.0,),
+            const SizedBox(
+              height: 30.0,
+            ),
             // Row(
             //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
             //   children: [
@@ -252,7 +247,6 @@ class _OtpVerificationState extends State<OtpVerification> {
             OtpTextField(
               numberOfFields: 6,
               fieldWidth: 47,
-
               fillColor: Colors.black.withOpacity(0.1),
               filled: true,
             ),
@@ -275,13 +269,12 @@ class _OtpVerificationState extends State<OtpVerification> {
                 ),
                 )
               ],
+
             ),
           ),
           ],
         ),
-        ),
-      )
-    );
+      ),
+    ));
   }
 }
-
