@@ -63,8 +63,8 @@ class SelectWasteType extends StatelessWidget {
                     children: [
 
                       WasteTypeTile(
-                          icon:  SvgPicture.asset("assets/knotted-sack-icon.svg", width: 50, height: 50,),
-                          text: "Domestic Waste",
+                          icon:  SvgPicture.asset("assets/sewer-icon.svg", width: 50, height: 50,),
+                          text: "Liquid waste",
                       ),
                       const SizedBox(width: 30,),
                       WasteTypeTile(
