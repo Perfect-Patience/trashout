@@ -1,10 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:trashout/constants/constants.dart';
+import 'package:trashout/constants/globalVariables.dart';
 import 'package:trashout/screens/trackOrderPage.dart';
 import 'package:trashout/screens/userInfoPage.dart';
 import 'homeDetailPage.dart';
+import '';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -22,8 +25,15 @@ class _HomePageState extends State<HomePage> {
     const UserInfoPage()
   ];
 
+  final firebaseUser = FirebaseAuth.instance.currentUser;
+  getUserID() async {
+    final currentUserID = firebaseUser?.uid;
+    userID = currentUserID!;
+  }
+
   @override
   Widget build(BuildContext context) {
+    getUserID();
     return Scaffold(
       bottomNavigationBar: GNav(
           rippleColor: Colors.grey, // tab button ripple color when pressed
@@ -70,7 +80,7 @@ class _HomePageState extends State<HomePage> {
           },
           selectedIndex: _currentIndex,
           // navigation bar padding
-          tabs: [
+          tabs: const [
             GButton(
               icon: Icons.home,
               text: 'Home',

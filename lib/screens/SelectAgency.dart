@@ -157,7 +157,7 @@ class _SelectAgencyState extends State<SelectAgency> {
                Navigator.push(context, MaterialPageRoute(builder: (context) => const OrderSummary()));
              }
              else {
-               return ;
+               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Please select agency")));
              }
             // Navigator
           }),

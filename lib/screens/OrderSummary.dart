@@ -19,6 +19,8 @@ class OrderSummary extends StatelessWidget {
       DateTime currentDate = DateTime.now().toLocal();
       date = DateFormat('dd/MM/yy').format(currentDate);
     }
+
+
     return  Scaffold(
       body: SafeArea(child: Container(
         padding: const EdgeInsets.all(20),
@@ -100,11 +102,12 @@ class OrderSummary extends StatelessWidget {
 
             GreenButton("Confirm Order", () {
               Map<String, String> orderDetailsToSave = {
-                'Date' : date,
+                'Pickup Date' : date,
                 'Location' : pickUpLocation,
                 'Waste Type': wasteType,
                 'Payment Method' : paymentType ,
-                // 'Agency':  ,
+                'AgencyID': pickUpAgencyID,
+                'UserID' : userID,
               };
 
               FirebaseFirestore.instance.collection("orders").add(orderDetailsToSave);
@@ -112,7 +115,7 @@ class OrderSummary extends StatelessWidget {
                 const SnackBar(content: Text("Order saved, you will receive a notification soon")),
               );
 
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
+              Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
 
             }),
             const SizedBox(height: 30,),

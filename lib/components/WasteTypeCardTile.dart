@@ -36,6 +36,7 @@ class _WasteTypeTileState extends State<WasteTypeTile> {
 
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             widget.icon,
             const SizedBox(height: 15,),

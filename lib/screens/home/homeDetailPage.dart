@@ -107,11 +107,11 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
             },
             itemBuilder: (BuildContext context) => [
               FirebaseAuth.instance.currentUser != null
-                  ? PopupMenuItem<String>(
+                  ? const PopupMenuItem<String>(
                       value: 'logout',
                       child: Text('Logout'),
                     )
-                  : PopupMenuItem<String>(
+                  : const PopupMenuItem<String>(
                       value: 'Sign in',
                       child: Text('Sign in'),
                     )
@@ -233,51 +233,6 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                 ],
               ),
               const SizedBox(height: 20.0,),
-
-              Row(
-                children: [
-                  CardTileComponent(
-                    icon: Icons.credit_card,
-                    text: "payments and invoices",
-                    onTap: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const Payments()));
-                    },
-                  ),
-                  const SizedBox(width: 20.0,),
-                  CardTileComponent(
-                    icon: Icons.recycling,
-                    text: "recycle it",
-                    onTap: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => RecycleIt()));
-                    },
-                  ),
-                ],
-              ),
-
-              const SizedBox(height: 20.0,),
-              Row(
-                children: [
-                  CardTileComponent(
-                    icon: Icons.notifications_none,
-                    text: "notifications",
-                    onTap: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Notifications()));
-                    },
-                  ),
-                  const SizedBox(width: 20.0,),
-                  CardTileComponent(
-                    icon: Icons.flag_outlined,
-                    text: "report a missed pick up",
-                    onTap: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => const ReportMissedPickup()));
-                    },
-                  ),
-                ],
-              ),
 
             ],
           ),

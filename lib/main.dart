@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:trashout/screens/SelectAgency.dart';
 import 'package:trashout/screens/SelectPaymentMethod.dart';
+import 'package:trashout/screens/home/home.dart';
 import 'package:trashout/screens/introScreens/onboarding.dart';
 import 'package:trashout/screens/introScreens/verification.dart';
 import 'package:trashout/screens/splashScreen/splash.dart';
@@ -18,7 +19,8 @@ void main() async {
       '/intro': (context) => const IntroScreen(),
       '/verification': (context) => const OtpVerification(),
       '/payment': (context) => const SelectPaymentMethod(),
-      '/selectAgency': (context) => const SelectAgency()
+      '/selectAgency': (context) => const SelectAgency(),
+      '/home' : (context) => const HomePage()
     },
   ));
 }

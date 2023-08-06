@@ -109,7 +109,14 @@ class _SelectPaymentMethodState extends State<SelectPaymentMethod> {
                     const SizedBox(height: 150),
 
                     GreenButton("NEXT", () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> const SelectAgency()));
+                      if (isSelected) {
+                        Navigator.push(context, MaterialPageRoute(builder: (
+                            context) => const SelectAgency()));
+                      }
+                      else{
+                        ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("Please select payment method")));
+                      }
                     })
                   ],
                 ) ,
