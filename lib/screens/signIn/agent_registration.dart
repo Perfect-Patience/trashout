@@ -67,7 +67,7 @@ class DriverLicenseFormState extends State<DriverLicenseForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Driver License Form'),
+        title: const Text('Agent Registration Form'),
         backgroundColor: const Color(0xFF00BF63),
       ),
       body: Padding(
