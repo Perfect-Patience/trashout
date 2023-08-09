@@ -88,32 +88,6 @@ class DriverLicenseFormState extends State<DriverLicenseForm> {
                   return null;
                 },
               ),
-              // Add Location of Agent TextFormField
-              TextFormField(
-                decoration: const InputDecoration(labelText: 'Location of Agent'),
-                onChanged: (value) {
-                  agentLocation = value;
-                },
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter the location of the agent';
-                  }
-                  return null;
-                },
-              ),
-              // Add Agency Location Name TextFormField
-              TextFormField(
-                decoration: const InputDecoration(labelText: 'Agency Location Name'),
-                onChanged: (value) {
-                  agencyLocationName = value;
-                },
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter the agency location name';
-                  }
-                  return null;
-                },
-              ),
               TextFormField(
                 decoration: const InputDecoration(labelText: 'Last Name'),
                 onChanged: (value) {
@@ -126,6 +100,35 @@ class DriverLicenseFormState extends State<DriverLicenseForm> {
                   return null;
                 },
               ),
+              // Add Location of Agent TextFormField
+              TextFormField(
+                decoration:
+                    const InputDecoration(labelText: 'Location of Agent'),
+                onChanged: (value) {
+                  agentLocation = value;
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter the location of the agent';
+                  }
+                  return null;
+                },
+              ),
+              // Add Agency Location Name TextFormField
+              TextFormField(
+                decoration:
+                    const InputDecoration(labelText: 'Agency Location Name'),
+                onChanged: (value) {
+                  agencyLocationName = value;
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter the agency location name';
+                  }
+                  return null;
+                },
+              ),
+
               TextFormField(
                 decoration: const InputDecoration(labelText: 'Email'),
                 onChanged: (value) {
@@ -180,7 +183,8 @@ class DriverLicenseFormState extends State<DriverLicenseForm> {
                 },
               ),
               TextFormField(
-                decoration: const InputDecoration(labelText: "License Expiry Date"),
+                decoration:
+                    const InputDecoration(labelText: "License Expiry Date"),
                 onChanged: (value) {
                   licenseExpiryDate = value;
                 },
