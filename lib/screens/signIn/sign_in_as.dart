@@ -1,12 +1,30 @@
 import 'package:flutter/material.dart';
-
 import 'agent_registration.dart';
 import 'customer_sign_in.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
+  @override
+  _RegisterScreenState createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
+  bool isCustomerSelected = false;
+  bool isAgentSelected = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back,
+              color: Colors.black), // Change color to black
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 25),
@@ -29,16 +47,34 @@ class RegisterScreen extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      FormPage())); // Perform action for customer selection
+                          setState(() {
+                            isCustomerSelected = true;
+                            isAgentSelected = false;
+                          });
                         },
-                        child: Icon(
-                          Icons.person,
-                          size: 120,
-                          color: Color(0xff00bf63),
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 200),
+                          curve: Curves.easeInOut,
+                          decoration: BoxDecoration(
+                            color:
+                                isCustomerSelected ? Colors.blue : Colors.white,
+                            borderRadius: BorderRadius.circular(72),
+                            boxShadow: isCustomerSelected
+                                ? [
+                                    BoxShadow(
+                                      color: Colors.blue.withOpacity(0.5),
+                                      blurRadius: 15,
+                                      offset: Offset(0, 10),
+                                    ),
+                                  ]
+                                : [],
+                          ),
+                          child: Icon(
+                            Icons.person,
+                            size: 132,
+                            color:
+                                isCustomerSelected ? Colors.white : Colors.blue,
+                          ),
                         ),
                       ),
                       SizedBox(height: 10),
@@ -56,16 +92,32 @@ class RegisterScreen extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      DriverLicenseForm())); // Perform action for agent selection
+                          setState(() {
+                            isCustomerSelected = false;
+                            isAgentSelected = true;
+                          });
                         },
-                        child: Icon(
-                          Icons.local_shipping,
-                          size: 120,
-                          color: Color(0xff00bf63),
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 200),
+                          curve: Curves.easeInOut,
+                          decoration: BoxDecoration(
+                            color: isAgentSelected ? Colors.blue : Colors.white,
+                            borderRadius: BorderRadius.circular(72),
+                            boxShadow: isAgentSelected
+                                ? [
+                                    BoxShadow(
+                                      color: Colors.blue.withOpacity(0.5),
+                                      blurRadius: 15,
+                                      offset: Offset(0, 10),
+                                    ),
+                                  ]
+                                : [],
+                          ),
+                          child: Icon(
+                            Icons.local_shipping,
+                            size: 132,
+                            color: isAgentSelected ? Colors.white : Colors.blue,
+                          ),
                         ),
                       ),
                       SizedBox(height: 10),
@@ -85,11 +137,23 @@ class RegisterScreen extends StatelessWidget {
               SizedBox(
                 width: 250,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Perform action for Next button
-                  },
+                  onPressed: (isCustomerSelected || isAgentSelected)
+                      ? () {
+                          if (isCustomerSelected) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => FormPage()));
+                          } else if (isAgentSelected) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DriverLicenseForm()));
+                          }
+                        }
+                      : null,
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xff00bf63),
+                    primary: Colors.green,
                   ),
                   child: Text(
                     'Next',
