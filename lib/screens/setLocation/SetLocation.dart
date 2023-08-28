@@ -10,15 +10,14 @@ import '../SelectWasteType.dart';
 import '../searchLocation/SearchLocation.dart';
 import 'package:geolocator/geolocator.dart';
 
-
 class SetLocation extends StatefulWidget {
   const SetLocation({super.key});
 
   @override
   State<SetLocation> createState() => _SetLocationState();
 }
-class _SetLocationState extends State<SetLocation> {
 
+class _SetLocationState extends State<SetLocation> {
   final Completer<GoogleMapController> _controller = Completer();
   static const LatLng sourceLocation = LatLng(6.673175, -1.565423);
 
@@ -69,54 +68,64 @@ class _SetLocationState extends State<SetLocation> {
   //   }
   // }
   @override
-
   Widget build(BuildContext context) {
-
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       // backgroundColor: Colors.red,
       body: Stack(
         children: [
-
-            //  Container(
-            //   color: Colors.red,
-            //   padding: const EdgeInsets.all(20.0),
-            // ),
-           const GoogleMap(initialCameraPosition: CameraPosition(
-            target: sourceLocation,
-            zoom: 15
-          )),
+          //  Container(
+          //   color: Colors.red,
+          //   padding: const EdgeInsets.all(20.0),
+          // ),
+          const GoogleMap(
+              initialCameraPosition:
+                  CameraPosition(target: sourceLocation, zoom: 15)),
           Positioned(
             bottom: 0.0,
             child: Container(
-
-              width: screenWidth ,
+              width: screenWidth,
               height: 450,
-              padding:const  EdgeInsets.only(left: 10.0, right: 10.0),
+              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
               decoration: const BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0)),
               ),
               // height: 100.0,
               child: Column(
                 children: [
-                  const SizedBox(height: 40.0,),
-                  const FaIcon(FontAwesomeIcons.mapLocationDot, size: 50.0, color: primaryColor,),
-                  const SizedBox(height: 30.0,),
-                  const Text("Set pick up location", style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0
-                  ),),
-                  const SizedBox(height: 25.0,),
-
+                  const SizedBox(
+                    height: 40.0,
+                  ),
+                  const FaIcon(
+                    FontAwesomeIcons.mapLocationDot,
+                    size: 50.0,
+                    color: primaryColor,
+                  ),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
+                  const Text(
+                    "Set pick up location",
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                  ),
+                  const SizedBox(
+                    height: 25.0,
+                  ),
                   const Text(
                     "choose a location so agents can find and pick up your trash",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                    fontSize: 18.0,
-                  ),),
-                  const SizedBox(height: 30.0,),
+                      fontSize: 18.0,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30.0,
+                  ),
                   UnColoredButton("Use my location", () async {
                     showDialog(
                       context: context,
@@ -129,28 +138,38 @@ class _SetLocationState extends State<SetLocation> {
                     );
                     Position? position = await _determinePosition();
                     if (position != null) {
-                      List<Placemark> placemark = await placemarkFromCoordinates(position.latitude, position.longitude);
+                      longitude = position.longitude;
+                      latitude = position.latitude;
+                      List<Placemark> placemark =
+                          await placemarkFromCoordinates(
+                              position.latitude, position.longitude);
                       Placemark place = placemark[0];
-                      pickUpLocation = '${place.name}, ${place.street}, \n ${place.locality}';
+                      pickUpLocation =
+                          '${place.name}, ${place.street}, \n ${place.locality}';
                     }
 
                     Navigator.pop(context); // Hide the loading indicator
 
                     if (pickUpLocation != null && pickUpLocation.isNotEmpty) {
-                      await Navigator.push(context, MaterialPageRoute(builder: (context) => const SelectWasteType()));
+                      await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SelectWasteType()));
                     }
-
-
                   }, primaryColor, Colors.white),
-                  const SizedBox(height: 25.0,),
+                  const SizedBox(
+                    height: 25.0,
+                  ),
                   UnColoredButton("Search location", () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SearchLocation()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SearchLocation()));
                   }, Colors.grey[200]!, Colors.black)
                 ],
               ),
             ),
           )
-
         ],
       ),
     );

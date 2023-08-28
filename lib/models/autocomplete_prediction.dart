@@ -13,6 +13,7 @@ class AutocompletePrediction {
   /// [reference] contains reference.
   final String? reference;
 
+
   AutocompletePrediction({
     this.description,
     this.structuredFormatting,

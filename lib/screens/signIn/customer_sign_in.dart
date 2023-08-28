@@ -1,9 +1,8 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer' as console show log;
+import 'package:trashout/constants/globalVariables.dart';
+// import 'dart:developer' as console show log;
 
 import 'package:trashout/screens/home/home.dart';
 
@@ -80,6 +79,8 @@ class _FormPageState extends State<FormPage> {
       'email': email,
       'username': username,
       'phoneNumber': phoneNumber,
+      'token': fcmtoken,
+      
       // Add more fields as needed
     });
   }
@@ -103,15 +104,15 @@ class _FormPageState extends State<FormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Customer Registration',
           style: TextStyle(color: Colors.white), // Set the text color to white
         ),
         backgroundColor:
-            Color(0xff00bf63), // Set the background color of the AppBar
+           const  Color(0xff00bf63), // Set the background color of the AppBar
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Form(
           key: _formKey, // Provide the form key to enable validation
           child: Column(
@@ -135,7 +136,7 @@ class _FormPageState extends State<FormPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: lastNameController,
                 decoration: InputDecoration(
@@ -153,7 +154,7 @@ class _FormPageState extends State<FormPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: emailController,
                 decoration: InputDecoration(
@@ -172,7 +173,7 @@ class _FormPageState extends State<FormPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: passwordController,
                 decoration: InputDecoration(
@@ -193,7 +194,7 @@ class _FormPageState extends State<FormPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: confirmPasswordController,
                 decoration: InputDecoration(
@@ -214,18 +215,18 @@ class _FormPageState extends State<FormPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: _submitForm,
                 style: ElevatedButton.styleFrom(
-                  primary: Color(
+                  backgroundColor:const  Color(
                       0xff00bf63), // Set the background color of the button to green
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(
                         30.0), // Set the button border radius
                   ),
                 ),
-                child: Text(
+                child: const  Text(
                   'Next',
                   style: TextStyle(
                     color: Colors.white, // Set the text color to white

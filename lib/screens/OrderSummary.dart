@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:trashout/components/button.dart';
 import 'package:trashout/constants/constants.dart';
 import 'package:trashout/readData/readAgencyData.dart';
-import 'package:trashout/screens/home/home.dart';
+// import 'package:trashout/screens/home/home.dart';
 import 'package:trashout/screens/setLocation/SetLocation.dart';
 
 import '../constants/globalVariables.dart';
@@ -46,7 +46,7 @@ class OrderSummary extends StatelessWidget {
             const SizedBox(height: 10,),
 
             Text(date, style: const TextStyle(
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.w500
             ),),
 
@@ -58,7 +58,7 @@ class OrderSummary extends StatelessWidget {
 
 
             Text(pickUpLocation, style: const TextStyle(
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: FontWeight.w500
             ),),
 
@@ -71,7 +71,7 @@ class OrderSummary extends StatelessWidget {
             const SizedBox(height: 10,),
 
             Text(wasteType, style: const TextStyle(
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.w500
             ),),
 
@@ -81,7 +81,7 @@ class OrderSummary extends StatelessWidget {
             const SizedBox(height: 10,),
 
             Text(paymentType, style: const TextStyle(
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.w500
             ),),
 
@@ -93,7 +93,7 @@ class OrderSummary extends StatelessWidget {
             const SizedBox(height: 10,),
 
             GetAgencyName(agencyID: pickUpAgencyID, style: const TextStyle(
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.w500
             ),),
             const SizedBox(height: 25,),

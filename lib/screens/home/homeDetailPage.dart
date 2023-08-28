@@ -70,7 +70,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
         ),
         actions: [
           PopupMenuButton<String>(
-            icon: Icon(
+            icon: const Icon(
               Icons.logout_rounded,
               color: Colors.white,
             ),
@@ -80,17 +80,17 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('Logout'),
-                      content: Text('Are you sure you want to log out?'),
+                      title: const Text('Logout'),
+                      content: const Text('Are you sure you want to log out?'),
                       actions: [
                         TextButton(
-                          child: Text('Cancel'),
+                          child: const Text('Cancel'),
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
                         ),
                         TextButton(
-                          child: Text('Logout'),
+                          child: const Text('Logout'),
                           onPressed: () {
                             signOutUser();
                             // Call the signOutUser function
@@ -162,6 +162,7 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                         icon: Icons.calendar_month_rounded,
                         text: "schedule a pick up",
                         onTap: () {
+                          isScheduled = true;
                           _showDatePicker();
                         },
                       ),
@@ -232,8 +233,9 @@ class _HomeDetailPageState extends State<HomeDetailPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 20.0,),
-
+              const SizedBox(
+                height: 20.0,
+              ),
             ],
           ),
         ),
