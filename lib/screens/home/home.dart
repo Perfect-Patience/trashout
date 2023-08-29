@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _pages = [
     const HomeDetailPage(),
     const TrackOrderPage(),
-    const UserInfoPage()
+     UserInfoPage()
   ];
 
   final firebaseUser = FirebaseAuth.instance.currentUser;

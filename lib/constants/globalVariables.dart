@@ -13,3 +13,4 @@ double latitude = 0;
 String? placeID;
 dynamic locations;
 String? fcmtoken;
+String? agentToken;

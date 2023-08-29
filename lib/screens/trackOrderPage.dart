@@ -10,6 +10,12 @@ class TrackOrderPage extends StatefulWidget {
 class _TrackOrderPageState extends State<TrackOrderPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      padding: const EdgeInsets.all(20),
+
+      child: const Center(
+        child: Text("No ongoing pickup")
+      )
+    );
   }
 }
